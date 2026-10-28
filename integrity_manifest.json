@@ -1,0 +1,62 @@
+{
+  "status": "PARTIALLY_VERIFIED",
+  "files": [
+    {
+      "file": "claim_to_code.json",
+      "bytes": 5430,
+      "sha256": "cd0fd9548ecbd1f6e9a1b0a2480bbe6cabb3fa245b68e2a72d121f212d69569d"
+    },
+    {
+      "file": "code/causalguard/__init__.py",
+      "bytes": 361,
+      "sha256": "fc2409abbe3d0eb8f2927890c51bcb004758e99c8970fdfd9a4a5abec57cd795"
+    },
+    {
+      "file": "code/causalguard/aggregation.py",
+      "bytes": 1331,
+      "sha256": "20ccdfc2e2a7e31f4b3b780f436825dcd8dfc934fa8508b58052d01d455e99fd"
+    },
+    {
+      "file": "code/causalguard/data.py",
+      "bytes": 2671,
+      "sha256": "4612922b5c9d814b15a27a195127810f5f6ccd5f027f38da1cf76bda40fd462e"
+    },
+    {
+      "file": "code/causalguard/metrics.py",
+      "bytes": 1783,
+      "sha256": "a1d86ef5c4facb0bbbdcdd533e3e7d646c38cca54117b9378773472a9d311bbf"
+    },
+    {
+      "file": "code/causalguard/model.py",
+      "bytes": 2312,
+      "sha256": "6365ced9d7b0b888336923024c02a9b2a1838c1e5bb7fe47630b999717200cd2"
+    },
+    {
+      "file": "code/causalguard/objective.py",
+      "bytes": 1419,
+      "sha256": "3fa90643299bff3896345f19d7ac48651bf4e7a5c51e0ffc64e6ee2518c2bde7"
+    },
+    {
+      "file": "code/causalguard/training.py",
+      "bytes": 2031,
+      "sha256": "03841c176f243d5698f55368e7c3e97382ce2823a0f36f14000da92ef997be17"
+    },
+    {
+      "file": "code/pyproject.toml",
+      "bytes": 210,
+      "sha256": "44115cb35c8c3a8e47ccf6a87b87d0155a78c562097dd1d230188089777d10bf"
+    },
+    {
+      "file": "dataset_urls.txt",
+      "bytes": 63,
+      "sha256": "a6df604c6863de221502b5a0d2ab8ae23c45dd2c72e5f6880427db8913422fd4"
+    },
+    {
+      "file": "verification_report.json",
+      "bytes": 4116,
+      "sha256": "87a11f1cf6800985d7b63fc8505d1bc196916157c714d9d63cbd9199f0b3deff"
+    }
+  ],
+  "hash_algorithm": "sha256",
+  "scope": "All files except this manifest; no clinical records, model weights or external datasets included."
+}

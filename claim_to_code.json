@@ -1,0 +1,114 @@
+{
+  "title": "CausalGuard-FL: Causality-Guided Backdoor Defense for Federated Medical Vision–Language Models in Sepsis-Associated Acute Lung Injury",
+  "status": "PARTIALLY_VERIFIED",
+  "claims": [
+    {
+      "location": "Methods, Inputs and preprocessing, p.15",
+      "claim": "448 by 448 frontal radiographs, report truncated to 256 tokens, clinical variables encoded",
+      "code": [],
+      "status": "NOT_RUN",
+      "reason": "Raw image, report and clinical preprocessing and the clinical encoder are not implemented; the available loader accepts precomputed features."
+    },
+    {
+      "location": "Methods, Backbone and model, p.15",
+      "claim": "Qwen3-VL with clinically adapted frozen image and report towers",
+      "code": [],
+      "status": "BLOCKED",
+      "reason": "Exact tower extraction, adapter configuration, and adapted weights are not supplied; the implementation address could not be accessed."
+    },
+    {
+      "location": "Methods, X-Front, p.16",
+      "claim": "Agreement uses cosine similarity and elementwise product; 64 clean-data centroids",
+      "code": [
+        "code/causalguard/model.py:agreement_embedding",
+        "code/causalguard/model.py:AgreementModel"
+      ],
+      "status": "NOT_RUN",
+      "reason": "The embedding concatenation is an engineering choice; centroids are supplied externally. Their clean-only fitting and the clinical tower features were not verified."
+    },
+    {
+      "location": "Methods, X-Front, Eq. 1, p.16",
+      "claim": "Sum over mediator assignments and batch-averaged conditional outcome distributions",
+      "code": [
+        "code/causalguard/model.py:AgreementModel.forward"
+      ],
+      "status": "NOT_RUN",
+      "reason": "The explicit arithmetic was checked previously. Squared-distance soft assignment, neural head, temperature and arithmetic averaging are engineering defaults; the paper also mentions a normalized weighted geometric mean without specifying its formula."
+    },
+    {
+      "location": "Methods, CSI-Reg, Eq. 2, p.16",
+      "claim": "Sum across silos of squared gradient of risk with respect to scalar multiplier at one",
+      "code": [
+        "code/causalguard/objective.py:invariance_penalty"
+      ],
+      "status": "NOT_RUN",
+      "reason": "The scalar-gradient expression was checked previously; applying it to task logits and selecting non-invariant mediator coordinates are not specified by the manuscript."
+    },
+    {
+      "location": "Methods, DA-Agg, Eq. 3, p.17",
+      "claim": "Project the weighted mean client update orthogonally to the masked disagreement subspace",
+      "code": [
+        "code/causalguard/aggregation.py:projected_average"
+      ],
+      "status": "NOT_RUN",
+      "reason": "The projection expression was checked previously; selection of the mask and MAD-based spectral threshold is not defined precisely enough to implement without an additional assumption. Rank and mask must be supplied."
+    },
+    {
+      "location": "Methods, Eq. 4, p.17",
+      "claim": "Task plus 0.5 times front-door loss plus 0.1 times invariance loss",
+      "code": [
+        "code/causalguard/objective.py:objective"
+      ],
+      "status": "NOT_RUN",
+      "reason": "Weights match the manuscript. The task head and loss are engineering choices; no clinical training was performed."
+    },
+    {
+      "location": "Methods, Participants and Endpoint, pp.14–15",
+      "claim": "Sepsis-3 cohort and Berlin-criteria moderate or severe injury within 72 hours",
+      "code": [],
+      "status": "BLOCKED",
+      "reason": "Clinical records and adjudicated labels are restricted."
+    },
+    {
+      "location": "Results, cohort, p.5",
+      "claim": "Patient-held-out test data separated before poisoning",
+      "code": [
+        "code/causalguard/data.py:check_patient_disjoint"
+      ],
+      "status": "NOT_RUN",
+      "reason": "Study partitions were not available; patient separation has not been verified on the clinical cohort."
+    },
+    {
+      "location": "Methods, Threat model, p.15",
+      "claim": "Image, report and dual-key attacks assessed separately",
+      "code": [
+        "code/causalguard/metrics.py:attack_success"
+      ],
+      "status": "NOT_RUN",
+      "reason": "Attack generation and clinical held-out evaluation are absent. The non-target denominator is an engineering definition and is not confirmed by the paper."
+    },
+    {
+      "location": "Methods, Statistical analysis, p.19",
+      "claim": "Three-level accuracy and ten-bin expected calibration error",
+      "code": [
+        "code/causalguard/metrics.py:classification_metrics"
+      ],
+      "status": "NOT_RUN",
+      "reason": "Clinical evaluation and remaining metrics are not implemented."
+    },
+    {
+      "location": "Methods, Baselines and Results, pp.5–13, 17–19",
+      "claim": "Reported baseline comparisons, ablations, uncertainty, reader and prospective analyses",
+      "code": [],
+      "status": "NOT_RUN",
+      "reason": "The required baselines, study data and statistical procedures are not present."
+    },
+    {
+      "location": "Methods, p.15–17",
+      "claim": "Training schedule, optimizer, learning rate, batch size, seeds, compute, Qwen adaptation and codebook fitting",
+      "code": [],
+      "status": "BLOCKED",
+      "reason": "The manuscript does not specify these sufficiently and the official implementation could not be accessed."
+    }
+  ]
+}

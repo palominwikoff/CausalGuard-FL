@@ -1,0 +1,98 @@
+{
+  "status": "PARTIALLY_VERIFIED",
+  "checks": [
+    {
+      "name": "paper_to_code_review",
+      "status": "PASS",
+      "evidence": "Claims and limitations individually recorded in claim_to_code.json; PASS describes review coverage, not full scientific fidelity."
+    },
+    {
+      "name": "unit_and_training_checks",
+      "status": "PASS",
+      "evidence": "Six checks previously passed, including data reading, forward pass, loss, backward pass, parameter update, and save and load. The check files have since been removed; those results do not verify clinical data or the complete model."
+    },
+    {
+      "name": "independent_formula_checks",
+      "status": "PASS",
+      "evidence": "Previously checked the finite sum, scalar gradient, projection, and metric arithmetic; the check files have since been removed."
+    },
+    {
+      "name": "clinical_dataset_training_and_results",
+      "status": "BLOCKED",
+      "evidence": "The five-centre patient data and labels are restricted; no clinical result is asserted."
+    },
+    {
+      "name": "official_implementation_comparison",
+      "status": "BLOCKED",
+      "evidence": "The paper-listed release address was inaccessible when checked."
+    },
+    {
+      "name": "official_datasets_read",
+      "status": "NOT_RUN",
+      "evidence": "Source records were checked, but dataset files were not downloaded or read."
+    },
+    {
+      "name": "full_paper_model_and_experiments",
+      "status": "NOT_RUN",
+      "evidence": "The full backbone, clean codebook fitting, attacks, baselines and clinical analyses are not implemented."
+    },
+    {
+      "name": "requested_minimum_4500_effective_code_lines",
+      "status": "FAIL",
+      "evidence": "The partial implementation is smaller than the requested minimum and the remaining paper methods have not been implemented."
+    },
+    {
+      "name": "privacy_pattern_and_artifact_scan",
+      "status": "PASS",
+      "evidence": "Pattern scan for common absolute paths, credentials, email addresses and prohibited wording; matches: 0. This is not proof of absence of every possible sensitive value."
+    },
+    {
+      "name": "duplicate_function_body_scan",
+      "status": "PASS",
+      "evidence": "Compared Python function bodies by syntax tree; exact duplicates: 0."
+    },
+    {
+      "name": "markdown_and_workflow_scan",
+      "status": "PASS",
+      "evidence": "Checked project tree for Markdown files and .github directories."
+    },
+    {
+      "name": "requested_coverage_and_referenced_modules",
+      "status": "FAIL",
+      "evidence": "The model, preprocessing, full experiments and required code size remain incomplete."
+    }
+  ],
+  "engineering_defaults": [
+    "The input is a CSV of externally computed, paired vectors and clinical features.",
+    "Agreement concatenates cosine similarity with the elementwise product.",
+    "Assignment uses squared Euclidean distance and temperature 1.",
+    "Task and outcome networks are small two-layer heads with hidden width 32.",
+    "Cross entropy is used as the task risk; risk for invariance uses task logits.",
+    "The aggregation mask and rank are externally supplied.",
+    "The attack success denominator excludes examples already in the target class."
+  ],
+  "not_specified": [
+    "optimizer",
+    "learning rate",
+    "batch size",
+    "training duration",
+    "adapter configuration",
+    "pretrained or adapted tower weights",
+    "codebook fitting algorithm",
+    "exact geometric-mean estimator",
+    "coordinate flagging and spectral cutoff",
+    "complete train-validation split and random seeds"
+  ],
+  "third_party_data": [
+    {
+      "name": "ROCOv2",
+      "rights": "CC BY-NC 4.0 according to the NLM dataset catalogue; individual image rights should also be checked against dataset license information.",
+      "source": "dataset_urls.txt"
+    },
+    {
+      "name": "Indiana University chest radiographs",
+      "rights": "Open-i advises checking individual image licenses and asks that datasets not be redistributed outside the research group or organization.",
+      "source": "dataset_urls.txt"
+    }
+  ]
+}
